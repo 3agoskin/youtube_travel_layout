@@ -3,7 +3,9 @@ $main_lite = #fff
 $main_highlite = #FBD784
 $mian_highlite_title = #FFC178
 $main_buttons = #FFA343
+$main_border = rgba($main_lite, 15%)
 $main_shift = 4.7rem;
+$border_radius = 8px;
 
 html,
 body {
@@ -37,9 +39,16 @@ a {
     padding: 0 $main_shift $main_shift;
     max-width 1460px;
     margin: 0 auto;
+    margin-top: 50px;
 
     p {
         margin-bottom: 1.3em;
+    }
+
+    &_small {
+        max-width: 934px;
+        padding: 0 2.75rem 2.75rem;
+        margin: 0 auto;
     }
 }
 
@@ -206,6 +215,24 @@ a {
     }    
 }
 
+.main-title_centered {
+    text-align: center;
+
+    .main-title__summary {
+        justify-content: center
+
+        &::after {
+            content: '';
+            display: block;
+            width: 4em;
+            height: 3px;
+            // Отнимаем потому что letter-spacing 
+            margin-left: calc(1.5em - 0.36em);
+            background: $mian_highlite_title ;
+        }
+    }
+}
+
 .social-networks {
     position: absolute;
     left: 0;
@@ -233,6 +260,27 @@ a {
     }
 }
 
+.social-horisontal {
+    display: flex;
+    font-size: 1.3rem;
+
+    &__item {
+        display: inline-block;
+        margin-left: 2rem;
+    }
+
+    &__link {
+        display: inline-block;
+        opacity: 1;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.7;  
+        }
+    }
+
+}
+
 .scroll-down {
     display: flex;
     cursor: pointer;
@@ -249,6 +297,9 @@ a {
 }
 
 /* Columns */
+.section {
+    margin-bottom: 14rem;
+}
 
 .section-cols {
     display: flex;
@@ -257,19 +308,23 @@ a {
 }
 
 .section-col {
-    &:first-child {
+    &__image {
         width: 40%
     }
 
-    &:last-child {
+    &__content  {
 
         width: 44%
     }
-
-    &__image {
-        width: 100%
-    }
 }
+
+.section-border {
+    padding-bottom: 3rem;
+    border-bottom: 1px solid $main_border;
+    margin-bottom: 3rem;
+}
+
+
 
 .arrow-link {
     text-decoration: none;
@@ -279,53 +334,219 @@ a {
     &__icon {
         margin: 0.2rem 0 0 0.4rem;
     }
-}
 
-/* Gallery  -- 9 min -- */
-
-.gallery {
-    &__slide{
-        width: 100%;
-        padding-bottom: 67%
-        pointer-events: none;
-        background-size: cover;
+    &_centered {
+        justify-content: center;
     }
 }
 
-/* icons */
+.button {
+    border: none;
+    background: $main_buttons;
+    font: 700 0.9rem/1 'Open Sans', sans-serif; // весь шрифт заново - элемент формы
+    padding: 1.6em 4.5em 1.4em; // em - наследование от шрифта в форме
+    border-radius: $border_radius;
+    cursor: pointer;
+    transition: background 0.3s;
 
+    &:hover {
+        background: $mian_highlite_title; 
+    }
+}
+
+/* Gallery  */
+.gallery {
+    &__slide{
+        position: relative;
+        width: 100%;
+        padding-bottom: 67%
+        background-size: cover;
+    }
+
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
+    }
+}
+
+/* Under-footer */
+.start {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    &__title {
+        font-size: 2.66rem;
+        font-weight: 700;
+        margin-right: 3rem;
+    }
+
+    &__desc {
+        font-size: 1.22rem;
+        margin-right: 3rem
+    }
+
+    &__content {
+        display: flex;
+        align-items: baseline;
+    }
+
+    &__content2 {
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Footer */
+.subscribe {
+    width: 27%;
+
+    &__title {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.4;
+        margin-bottom: 1.38em;
+    }
+}
+
+.email {
+    width: 100%
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-bottom: 1px solid $main_border;
+
+    &__form {
+        background: none;
+        border: none;
+        font: 0.83rem/1 'Open Sans', sans-serif;
+        padding: 1.1em 0.77em 1.77em;
+        color: $main_lite;
+
+        &::placeholder {
+            color: rgba($main_lite, 20%);
+        }
+        
+        &:focus {
+            border: none;
+            outline: none;
+        }
+
+        
+    }
+    &__button {
+        padding: 0; 
+        height: 100%;
+        width: 3.55rem;
+        border-radius: $border_radius $border_radius 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }  
+}
+
+.menu {
+    width: 8rem;
+    &__title {
+        color: $main_highlite;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 0.5em;
+    }
+
+    &__item {
+        margin-bottom: 0.7rem;
+    }
+
+    &__link {
+        color: $main_lite;
+        text-decoration: none;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $main_lite;
+        }
+    }
+}
+
+.footer {
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 7rem;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;   
+        padding: 0 2.22rem; 
+    }
+
+    &__link {
+        color: $main_lite;
+        text-decoration: none;
+        font-size: 0.833rem;
+        display: inline-block;
+        margin-right: 4.5rem;
+
+        &:hover,
+        &:visited,
+        &:active {
+            color: $main_lite;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+      
+}
+
+/* icons */
 .icon__instagram {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.3em;
+    height: 1.3em;
     background: url("/images/icons/instagram.svg") no-repeat center center;
     background-size: contain;
 }
 
 .icon__twitter {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.3em;
+    height: 1.3em;
     background: url("/images/icons/twitter.svg") no-repeat center center;
     background-size: contain;
 }
 
 .icon__facebook {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.3em;
+    height: 1.3em;
     background: url("/images/icons/facebook.svg") no-repeat center center;
     background-size: contain;
 }
 
 .icon__arrow__downward {
-    width: 1rem;
-    height: 1.4rem;
+    width: 1em;
+    height: 1.4em;
     background: url("/images/icons/arrow_downward.svg") no-repeat center center;
     background-size: contain;
 }
 
 .icon__arrow_rightward {
-    width: 1.6rem;
-    height: 1.2   rem;
+    width: 1.6em;
+    height: 1.2em;
     background: url('/images/icons/arrow_rightward.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.icon__right {
+    width: 1.5em;
+    height: 1.5em;
+    background: url('/images/icons/arrow_right.svg') no-repeat center center;
     background-size: contain;
 }
 
@@ -336,12 +557,13 @@ a {
     }
 
     .section-col {
-        &:first-child {
+        &__image {
             width: 40%
         }
 
-        &:last-child {
-            width: 50%;
+        &__content  {
+
+            width: 50%
         }
     }
 
@@ -349,7 +571,7 @@ a {
         max-width: 1200px;
     }
     
-}
+} 
 
 @media screen and (max-width: 1550px) {
     html,
@@ -360,12 +582,13 @@ a {
 
 @media screen and (max-width: 1380px) {
     .section-col {
-        &:first-child {
+        &__image {
             width: 43%
         }
 
-        &:last-child {
-            width: 50%;
+        &__content  {
+
+            width: 50%
         }
     }
     
