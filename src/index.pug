@@ -12,27 +12,28 @@ html(lang="ru")
         link(rel="stylesheet" href="/js/gallery-lib/gallery.css")
         script(src="/js/gallery-lib/gallery.js") 
     body
+        header.header
+            .header__content
+                a.logo(href="/")
+                    h1.logo__title QWERy
+                .burger-menu
+                    .burger-menu__content
+                        nav.main-nav.header__center
+                            ul.main-nav__list 
+                                li.main-nav__item
+                                    a.main-nav__link.main-nav__link_active(href="#") Information 
+                                li.main-nav__item
+                                    a.main-nav__link(href="#") About&nbsp;us
+                                li.main-nav__item
+                                    a.main-nav__link(href="#") Culture
+                        label.search
+                            .search__icon
+                            input.search__form(type="text" placeholder="Search")
+                    button.burger-menu__control
+            .space-cover__burger
         .page
-            header.header
-                .header__content
-                    a.logo(href="/")
-                        h1.logo__title QWERy
-                    .burger-menu.burger-menu__opened
-                        .burger-menu__content
-                            nav.main-nav.header__center
-                                ul.main-nav__list 
-                                    li.main-nav__item
-                                        a.main-nav__link.main-nav__link_active(href="#") Information 
-                                    li.main-nav__item
-                                        a.main-nav__link(href="#") About&nbsp;us
-                                    li.main-nav__item
-                                        a.main-nav__link(href="#") Culture
-                            label.search
-                                .search__icon
-                                input.search__form(type="text" placeholder="Search")
-                        button.burger-menu__control
-                .space-cover__burger
             .cover-space
+                .cover-space__image
             section.section.section__main
                 .main-title
                     span.main-title__summary Explore the Nature Beauty
@@ -71,7 +72,7 @@ html(lang="ru")
                                         .main-title.main-title_small.main-title_centered
                                             span.main-title__summary Bromo
                                             h2.main-title__text Steady your steps, we will climb together!
-                                        p Enjoying the vast expanse of the sea of sand, witnessing the splendor of Mount Semeru that soars into the sky, and gazing at the beauty of the sun moving out of its bad or otherwise enjoying the dim twilight from the Bromo ridge is an unforgettable experience when visiting Bromo.
+                                        p.main-title__gallery Enjoying the vast expanse of the sea of sand, witnessing the splendor of Mount Semeru that soars into the sky, and gazing at the beauty of the sun moving out of its bad or otherwise enjoying the dim twilight from the Bromo ridge is an unforgettable experience when visiting Bromo.
                                         a.arrow-link.arrow-link_centered(href="#") read more 
                                             .arrow-link__icon.icon__arrow_rightward
                 section.section.section-cols
@@ -86,10 +87,9 @@ html(lang="ru")
                 section.section-border
                     .start
                         h2.start__title QWERTy
-                        .start__content2
-                            .start__content
-                                h4.start__desc Ready to explore?
-                                button.button Get started
+                        .start__content
+                            h4.start__desc Ready to explore?
+                            button.button Get started
                 footer.footer
                     .footer__content
                         .subscribe
